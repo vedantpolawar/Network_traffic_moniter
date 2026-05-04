@@ -74,6 +74,23 @@
             </div>
           </div>
 
+          <!-- Attack Alert Banner -->
+          <div id="attackAlert" class="attack-alert hidden">
+            <div class="attack-alert-icon">⚠</div>
+            <div class="attack-alert-content">
+              <div class="attack-alert-title" id="attackAlertTitle">
+                ATTACK DETECTED
+              </div>
+              <div class="attack-alert-desc" id="attackAlertDesc">
+                Suspicious traffic pattern identified
+              </div>
+            </div>
+            <div class="attack-alert-badge" id="attackAlertBadge">DDoS</div>
+            <button class="attack-alert-dismiss" onclick="dismissAlert()">
+              ✕
+            </button>
+          </div>
+
           <!-- Packet stream animation -->
           <div class="packet-stream" id="packetStream">
             <div class="stream-label">LIVE PACKET STREAM →</div>
@@ -226,6 +243,52 @@
                   <button class="btn danger" onclick="resetSim()">
                     ⟳ Reset
                   </button>
+                </div>
+
+                <hr class="sep" />
+
+                <div class="card-title" style="margin-top: 8px">
+                  <div class="dot red"></div>
+                  Attack Scenarios
+                </div>
+                <div
+                  style="
+                    display: flex;
+                    flex-direction: column;
+                    gap: 6px;
+                    margin-bottom: 8px;
+                  "
+                >
+                  <button
+                    class="btn attack-btn ddos-btn"
+                    onclick="injectAttack('ddos')"
+                  >
+                    💀 DDoS Flood
+                  </button>
+                  <button
+                    class="btn attack-btn syn-btn"
+                    onclick="injectAttack('syn')"
+                  >
+                    ⚡ SYN Flood
+                  </button>
+                  <button
+                    class="btn attack-btn scan-btn"
+                    onclick="injectAttack('portscan')"
+                  >
+                    🔍 Port Scan
+                  </button>
+                </div>
+                <div
+                  style="
+                    font-family: var(--mono);
+                    font-size: 9px;
+                    color: var(--text3);
+                    line-height: 1.5;
+                    margin-bottom: 4px;
+                  "
+                >
+                  Injects attack traffic into the live simulation. Watch the
+                  Top-K and alerts.
                 </div>
 
                 <hr class="sep" />
@@ -431,6 +494,28 @@
                 </button>
                 <button class="btn amber" onclick="loadExample('uniform')">
                   Uniform
+                </button>
+                <button
+                  class="btn"
+                  style="
+                    background: rgba(170, 102, 255, 0.15);
+                    border-color: #aa66ff;
+                    color: #aa66ff;
+                  "
+                  onclick="loadExample('synflood')"
+                >
+                  SYN Flood
+                </button>
+                <button
+                  class="btn"
+                  style="
+                    background: rgba(0, 255, 136, 0.1);
+                    border-color: #00ff88;
+                    color: #00ff88;
+                  "
+                  onclick="loadExample('portscan')"
+                >
+                  Port Scan
                 </button>
               </div>
             </div>
